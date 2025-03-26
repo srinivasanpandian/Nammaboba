@@ -1,51 +1,67 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Plyr video player with custom settings
-    const player = new Plyr('#hero-video', {
-        controls: false,
+    const player = new Plyr('#player', {
+        controls: [],  // Hide all controls
+        clickToPlay: false,
+        keyboard: false,
         muted: true,
-        loop: { 
-            active: true,
-            start: 15,    // Start time in seconds
-            end: 30      // End time in seconds
-        },
-        speed: { 
-            selected: 1,
-            options: [0.5, 0.75, 1, 1.25, 1.5, 2]
-        }
+        autopause: false,
+        autoplay: true,
+        loop: { active: true },
+        hideControls: true
     });
 
-    // Add custom time interval handling
-    player.on('timeupdate', () => {
-        const currentTime = player.currentTime;
-        const endTime = 15; // End time in seconds
-
-        // If video reaches end time, loop back to start
-        if (currentTime >= endTime) {
-            player.currentTime = 0;
-            player.play();
-        }
-    });
-
-    // Ensure video plays when it's ready
+    // When the video is ready
     player.on('ready', () => {
-        player.play();
+        player.play().catch(error => {
+            console.log("Autoplay prevented:", error);
+            // Try playing again with user interaction
+            document.addEventListener('click', () => {
+                player.play();
+            }, { once: true });
+        });
     });
 
-    // Handle video errors
-    player.on('error', (error) => {
-        console.error('Video error:', error);
-        // Attempt to restart the video
+    // Ensure video always plays in loop
+    player.on('ended', () => {
         player.restart();
     });
+
+    // Ensure video fills the container
+    function updateVideoSize() {
+        const video = document.querySelector('video');
+        if (video) {
+            const containerAspect = window.innerWidth / window.innerHeight;
+            const videoAspect = video.videoWidth / video.videoHeight;
+
+            if (containerAspect > videoAspect) {
+                video.style.width = '100vw';
+                video.style.height = 'auto';
+            } else {
+                video.style.width = 'auto';
+                video.style.height = '100vh';
+            }
+        }
+    }
+
+    // Update video size on window resize
+    window.addEventListener('resize', updateVideoSize);
+    const video = document.querySelector('video');
+    if (video) {
+        video.addEventListener('loadedmetadata', updateVideoSize);
+    }
+    updateVideoSize();
 
     // Mobile menu functionality
     const hamburger = document.querySelector('.hamburger');
     const sideNav = document.querySelector('.side-nav');
+    const sideNavLinks = document.querySelectorAll('.side-nav a');
     const body = document.body;
 
     if (hamburger && sideNav) {
-        hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event from bubbling
             hamburger.classList.toggle('active');
             sideNav.classList.toggle('active');
             body.style.overflow = sideNav.classList.contains('active') ? 'hidden' : '';
@@ -53,7 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!sideNav.contains(e.target) && !hamburger.contains(e.target)) {
+            const isClickInside = sideNav.contains(e.target) || hamburger.contains(e.target);
+            if (!isClickInside && sideNav.classList.contains('active')) {
                 hamburger.classList.remove('active');
                 sideNav.classList.remove('active');
                 body.style.overflow = '';
@@ -61,8 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Close menu when clicking a link
-        const navLinks = sideNav.querySelectorAll('a');
-        navLinks.forEach(link => {
+        sideNavLinks.forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 sideNav.classList.remove('active');
@@ -158,4 +174,69 @@ document.addEventListener('DOMContentLoaded', function() {
     menuItems.forEach(item => {
         menuObserver.observe(item);
     });
+
+    // Boba Storytime Slider
+    const storySlides = document.querySelectorAll('.story-slide');
+    const prevSlide = document.querySelector('.prev-slide');
+    const nextSlide = document.querySelector('.next-slide');
+    const storyDots = document.querySelector('.story-dots');
+    let currentSlide = 0;
+
+    // Create dots
+    storySlides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('story-dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        storyDots.appendChild(dot);
+    });
+
+    // Show first slide
+    storySlides[0].classList.add('active');
+
+    // Navigation functions
+    function updateSlides(newIndex) {
+        storySlides[currentSlide].classList.remove('active');
+        storyDots.children[currentSlide].classList.remove('active');
+        
+        currentSlide = newIndex;
+        
+        storySlides[currentSlide].classList.add('active');
+        storyDots.children[currentSlide].classList.add('active');
+    }
+
+    function goToSlide(index) {
+        updateSlides(index);
+    }
+
+    function nextSlideHandler() {
+        const newIndex = (currentSlide + 1) % storySlides.length;
+        updateSlides(newIndex);
+    }
+
+    function prevSlideHandler() {
+        const newIndex = (currentSlide - 1 + storySlides.length) % storySlides.length;
+        updateSlides(newIndex);
+    }
+
+    // Add event listeners
+    if (prevSlide && nextSlide) {
+        prevSlide.addEventListener('click', prevSlideHandler);
+        nextSlide.addEventListener('click', nextSlideHandler);
+    }
+
+    // Auto advance slides every 5 seconds
+    let slideInterval = setInterval(nextSlideHandler, 5000);
+
+    // Pause auto-advance on hover
+    const storySlider = document.querySelector('.story-slider');
+    if (storySlider) {
+        storySlider.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+
+        storySlider.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlideHandler, 5000);
+        });
+    }
 }); 
