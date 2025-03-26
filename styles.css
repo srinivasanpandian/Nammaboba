@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Quicksand', sans-serif;
     line-height: 1.6;
@@ -2051,7 +2055,9 @@ h1, h2, h3, h4, .logo h1 {
     .story-section {
         padding: 3rem 0;
     }
-    
+    .story-content{
+        padding: 0;
+    }
     .story-images {
         grid-template-columns: 1fr;
     }
@@ -2717,4 +2723,299 @@ h1, h2, h3, h4, .logo h1 {
     .footer-copyright {
         font-size: 0.85rem;
     }
-} 
+}
+
+/* Menu Hero Section */
+.menu-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('images/bb6.jpg') center/cover no-repeat;
+    padding: 150px 0 80px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('images/pattern.png') repeat;
+    opacity: 0.1;
+}
+
+.menu-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.menu-hero-content h1 {
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 4rem;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.menu-hero-content p {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+/* Menu Categories Section */
+.menu-categories-section {
+    padding: 40px 0;
+    background: #ffe4e9;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.menu-categories {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.category-btn {
+    padding: 12px 25px;
+    border: none;
+    background: white;
+    border-radius: 25px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1rem;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.1);
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: #ff69b4;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+}
+
+/* Menu Items Section */
+.menu-items-section {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.menu-item {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.menu-item-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.menu-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.menu-item:hover .menu-item-image img {
+    transform: scale(1.1);
+}
+
+.menu-item-overlay {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px 15px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.price {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1rem;
+    color: #ff69b4;
+    font-weight: 600;
+}
+
+.menu-item-content {
+    padding: 20px;
+}
+
+.menu-item-content h3 {
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.menu-item-content p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.menu-item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rating {
+    color: #ffd700;
+}
+
+.order-btn {
+    padding: 8px 20px;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.order-btn:hover {
+    background: #ff4da6;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+}
+
+/* Menu Page Media Queries */
+@media (max-width: 1200px) {
+    .menu-hero-content h1 {
+        font-size: 3.5rem;
+    }
+    
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+}
+
+@media (max-width: 992px) {
+    .menu-hero {
+        padding: 120px 0 60px;
+    }
+    
+    .menu-hero-content h1 {
+        font-size: 3rem;
+    }
+    
+    .menu-categories {
+        gap: 15px;
+    }
+    
+    .category-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-hero {
+        padding: 100px 0 40px;
+    }
+    
+    .menu-hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .menu-hero-content p {
+        font-size: 1.1rem;
+    }
+    
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .menu-item-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-hero {
+        padding: 80px 0 30px;
+    }
+    
+    .menu-hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .menu-hero-content p {
+        font-size: 1rem;
+    }
+    
+    .menu-categories {
+        gap: 10px;
+    }
+    
+    .category-btn {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+    
+    .menu-item-content {
+        padding: 15px;
+    }
+    
+    .menu-item-content h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Menu Item Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-item {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.menu-item:nth-child(1) { animation-delay: 0.1s; }
+.menu-item:nth-child(2) { animation-delay: 0.2s; }
+.menu-item:nth-child(3) { animation-delay: 0.3s; }
+.menu-item:nth-child(4) { animation-delay: 0.4s; }
+.menu-item:nth-child(5) { animation-delay: 0.5s; }

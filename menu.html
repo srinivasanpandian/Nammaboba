@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Namma Boba</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Fredoka:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/Media__5_-removebg-preview.png" alt="Namma Boba Logo">
+            </a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
+                <li><a href="index.html#about">Drinks</a></li>
+                <li><a href="index.html#contact">contact</a></li>
+            </ul>
+        </nav>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-google"></i></a>
+        </div>
+        <button class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Side Navigation -->
+    <nav class="side-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html" class="active">Menu</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="side-nav-social">
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-google"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Hero Section -->
+    <section class="menu-hero">
+        <div class="container">
+            <div class="menu-hero-content">
+                <h1>Our Menu</h1>
+                <p>Discover our delicious collection of boba drinks and treats</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Categories Section -->
+    <!-- <section class="menu-categories-section">
+        <div class="container">
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="milk-tea">Milk Tea</button>
+                <button class="category-btn" data-category="fruit-tea">Fruit Tea</button>
+                <button class="category-btn" data-category="specialty">Specialty</button>
+                <button class="category-btn" data-category="toppings">Toppings</button>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Menu Items Section -->
+    <section class="menu-items-section">
+        <div class="container">
+            <div class="menu-grid">
+                <!-- Milk Tea Category -->
+                <div class="menu-item" data-category="milk-tea">
+                    <div class="menu-item-image">
+                        <img src="images/b1.jpeg" alt="Classic Milk Tea">
+                        <div class="menu-item-overlay">
+                            <span class="price">$5.99</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Classic Milk Tea</h3>
+                        <p>Our signature black tea with creamy milk and chewy tapioca pearls.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="milk-tea">
+                    <div class="menu-item-image">
+                        <img src="images/b2.jpeg" alt="Brown Sugar Milk Tea">
+                        <div class="menu-item-overlay">
+                            <span class="price">$6.99</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Brown Sugar Milk Tea</h3>
+                        <p>Rich brown sugar syrup with fresh milk and caramelized boba.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="milk-tea">
+                    <div class="menu-item-image">
+                        <img src="images/b3.jpeg" alt="Taro Milk Tea">
+                        <div class="menu-item-overlay">
+                            <span class="price">$6.49</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Taro Milk Tea</h3>
+                        <p>Real taro root blended with milk and topped with boba pearls.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★☆</div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="milk-tea">
+                    <div class="menu-item-image">
+                        <img src="images/b4.jpeg" alt="Thai Milk Tea">
+                        <div class="menu-item-overlay">
+                            <span class="price">$6.99</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Thai Milk Tea</h3>
+                        <p>Authentic Thai tea with condensed milk and boba pearls.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="milk-tea">
+                    <div class="menu-item-image">
+                        <img src="images/b5.jpg" alt="Matcha Milk Tea">
+                        <div class="menu-item-overlay">
+                            <span class="price">$7.49</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Matcha Milk Tea</h3>
+                        <p>Premium Japanese matcha green tea with milk and boba.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fruit Tea Category -->
+                <div class="menu-item" data-category="fruit-tea">
+                    <div class="menu-item-image">
+                        <img src="images/b6.jpeg" alt="Mango Green Tea">
+                        <div class="menu-item-overlay">
+                            <span class="price">$7.99</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Mango Green Tea</h3>
+                        <p>Fresh mango chunks with green tea and mango jelly.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="fruit-tea">
+                    <div class="menu-item-image">
+                        <img src="images/bb1.jpg" alt="Strawberry Lemon Tea">
+                        <div class="menu-item-overlay">
+                            <span class="price">$7.49</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Strawberry Lemon Tea</h3>
+                        <p>Fresh strawberries with lemon tea and strawberry boba.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★☆</div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="fruit-tea">
+                    <div class="menu-item-image">
+                        <img src="images/bb2.jpg" alt="Passion Fruit Tea">
+                        <div class="menu-item-overlay">
+                            <span class="price">$7.99</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Passion Fruit Tea</h3>
+                        <p>Tropical passion fruit with green tea and passion fruit jelly.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="fruit-tea">
+                    <div class="menu-item-image">
+                        <img src="images/bb3.jpg" alt="Watermelon Slush">
+                        <div class="menu-item-overlay">
+                            <span class="price">$8.49</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Watermelon Slush</h3>
+                        <p>Fresh watermelon blended with ice and topped with watermelon boba.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="fruit-tea">
+                    <div class="menu-item-image">
+                        <img src="images/bb4.jpg" alt="Lychee Rose Tea">
+                        <div class="menu-item-overlay">
+                            <span class="price">$7.99</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Lychee Rose Tea</h3>
+                        <p>Sweet lychee with rose tea and lychee jelly.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialty Category -->
+                <div class="menu-item" data-category="specialty">
+                    <div class="menu-item-image">
+                        <img src="images/bb5.jpg" alt="Cheese Foam Tea">
+                        <div class="menu-item-overlay">
+                            <span class="price">$8.99</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Cheese Foam Tea</h3>
+                        <p>Black tea topped with creamy cheese foam and boba.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="specialty">
+                    <div class="menu-item-image">
+                        <img src="images/bb6.jpg" alt="Oreo Milk Tea">
+                        <div class="menu-item-overlay">
+                            <span class="price">$7.99</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Oreo Milk Tea</h3>
+                        <p>Crushed Oreo cookies with milk tea and chocolate boba.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★☆</div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="specialty">
+                    <div class="menu-item-image">
+                        <img src="images/b1.jpeg" alt="Red Bean Milk Tea">
+                        <div class="menu-item-overlay">
+                            <span class="price">$7.49</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Red Bean Milk Tea</h3>
+                        <p>Sweet red bean paste with milk tea and red bean boba.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="specialty">
+                    <div class="menu-item-image">
+                        <img src="images/b2.jpeg" alt="Coffee Milk Tea">
+                        <div class="menu-item-overlay">
+                            <span class="price">$7.99</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Coffee Milk Tea</h3>
+                        <p>Rich coffee with milk tea and coffee jelly.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="specialty">
+                    <div class="menu-item-image">
+                        <img src="images/b3.jpeg" alt="Honeycomb Milk Tea">
+                        <div class="menu-item-overlay">
+                            <span class="price">$8.49</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Honeycomb Milk Tea</h3>
+                        <p>Sweet honey with milk tea and honey boba.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Toppings Category -->
+                <div class="menu-item" data-category="toppings">
+                    <div class="menu-item-image">
+                        <img src="images/b4.jpeg" alt="Tapioca Pearls">
+                        <div class="menu-item-overlay">
+                            <span class="price">$1.99</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Tapioca Pearls</h3>
+                        <p>Classic chewy black tapioca pearls.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Add Topping</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="toppings">
+                    <div class="menu-item-image">
+                        <img src="images/b5.jpg" alt="Pudding">
+                        <div class="menu-item-overlay">
+                            <span class="price">$2.49</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Pudding</h3>
+                        <p>Smooth and creamy egg pudding.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Add Topping</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="toppings">
+                    <div class="menu-item-image">
+                        <img src="images/b6.jpeg" alt="Grass Jelly">
+                        <div class="menu-item-overlay">
+                            <span class="price">$2.49</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Grass Jelly</h3>
+                        <p>Traditional Chinese grass jelly.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★☆</div>
+                            <button class="order-btn">Add Topping</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="toppings">
+                    <div class="menu-item-image">
+                        <img src="images/bb1.jpg" alt="Red Bean">
+                        <div class="menu-item-overlay">
+                            <span class="price">$2.99</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Red Bean</h3>
+                        <p>Sweet red bean paste.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Add Topping</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="toppings">
+                    <div class="menu-item-image">
+                        <img src="images/bb2.jpg" alt="Aloe Vera">
+                        <div class="menu-item-overlay">
+                            <span class="price">$2.99</span>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Aloe Vera</h3>
+                        <p>Fresh aloe vera chunks.</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">★★★★★</div>
+                            <button class="order-btn">Add Topping</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/Media__5_-removebg-preview.png" alt="Namma Boba Logo">
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-google"></i></a>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2025 Namma Boba. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/menu.js"></script>
+</body>
+</html> 

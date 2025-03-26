@@ -56,33 +56,38 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu functionality
     const hamburger = document.querySelector('.hamburger');
     const sideNav = document.querySelector('.side-nav');
-    const sideNavLinks = document.querySelectorAll('.side-nav a');
-    const body = document.body;
+    const mainNav = document.querySelector('.main-nav');
+    let isMenuOpen = false;
 
     if (hamburger && sideNav) {
         hamburger.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent event from bubbling
+            e.stopPropagation();
+            isMenuOpen = !isMenuOpen;
             hamburger.classList.toggle('active');
             sideNav.classList.toggle('active');
-            body.style.overflow = sideNav.classList.contains('active') ? 'hidden' : '';
+            document.body.style.overflow = isMenuOpen ? 'hidden' : '';
         });
 
-        // Close menu when clicking outside
+        // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
-            const isClickInside = sideNav.contains(e.target) || hamburger.contains(e.target);
-            if (!isClickInside && sideNav.classList.contains('active')) {
+            if (isMenuOpen && 
+                !hamburger.contains(e.target) && 
+                !sideNav.contains(e.target)) {
+                isMenuOpen = false;
                 hamburger.classList.remove('active');
                 sideNav.classList.remove('active');
-                body.style.overflow = '';
+                document.body.style.overflow = '';
             }
         });
 
-        // Close menu when clicking a link
+        // Close menu when clicking on a link
+        const sideNavLinks = sideNav.querySelectorAll('a');
         sideNavLinks.forEach(link => {
             link.addEventListener('click', () => {
+                isMenuOpen = false;
                 hamburger.classList.remove('active');
                 sideNav.classList.remove('active');
-                body.style.overflow = '';
+                document.body.style.overflow = '';
             });
         });
     }
@@ -135,30 +140,49 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Menu Filtering Functionality
+    // Menu category filtering
     const categoryButtons = document.querySelectorAll('.category-btn');
     const menuItems = document.querySelectorAll('.menu-item');
+    const menuGrid = document.querySelector('.menu-grid');
 
+    // Function to filter menu items with animation
+    function filterMenuItems(category) {
+        // First, fade out all items
+        menuItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.8)';
+        });
+
+        // After a short delay, update visibility and fade in matching items
+        setTimeout(() => {
+            menuItems.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                    // Trigger reflow
+                    item.offsetHeight;
+                    item.style.opacity = '1';
+                    item.style.transform = 'scale(1)';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }, 300); // Match this with CSS transition duration
+    }
+
+    // Add click event listeners to category buttons
     categoryButtons.forEach(button => {
         button.addEventListener('click', () => {
             // Remove active class from all buttons
             categoryButtons.forEach(btn => btn.classList.remove('active'));
             // Add active class to clicked button
             button.classList.add('active');
-
-            const category = button.getAttribute('data-category');
-
-            menuItems.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
-                    // Add animation when item becomes visible
-                    item.classList.add('visible');
-                } else {
-                    item.style.display = 'none';
-                }
-            });
+            // Filter menu items based on selected category
+            filterMenuItems(button.dataset.category);
         });
     });
+
+    // Initialize with 'all' category
+    filterMenuItems('all');
 
     // Intersection Observer for menu items
     const menuObserver = new IntersectionObserver((entries) => {
@@ -239,4 +263,27 @@ document.addEventListener('DOMContentLoaded', function() {
             slideInterval = setInterval(nextSlideHandler, 5000);
         });
     }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            // Get the target section
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                // Close mobile menu if it's open
+                hamburger.classList.remove('active');
+                sideNav.classList.remove('active');
+                mainNav.classList.remove('active');
+                
+                // Smooth scroll to target
+                targetSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 }); 
