@@ -251,7 +251,21 @@ h1, h2, h3, h4, .logo h1 {
     height: 100%;
     z-index: 1;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.3); /* Overlay for better text visibility */
+    background-color: rgba(0, 0, 0, 1); /* Added light black overlay */
+}
+
+.video-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.5)
+    );
+    z-index: 2;
 }
 
 .video-container video {
@@ -264,6 +278,7 @@ h1, h2, h3, h4, .logo h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     object-fit: cover;
+    z-index: 1;
 }
 
 .plyr {
@@ -298,16 +313,28 @@ h1, h2, h3, h4, .logo h1 {
     font-family: 'Bubblegum Sans', cursive;
     font-size: 4rem;
     margin-bottom: 1.5rem;
-    color: #fff;
-    text-shadow: 3px 3px 6px rgba(255, 105, 180, 0.3);
     letter-spacing: 1px;
+}
+
+.hero-text h1 .welcome-text {
+    color: #fff;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.hero-text h1 .brand-name {
+    color: #ff69b4;
+    text-shadow: 3px 3px 6px rgba(255, 105, 180, 0.3);
 }
 
 .hero-text p {
     font-family: 'Fredoka', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 400;
+    font-size: 9rem; /* Increased from 1.5rem */
+    font-weight: 900;
     letter-spacing: 0.5px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+    line-height: 1.4;
+    margin-bottom: 2rem;
 }
 
 .job-banner {
@@ -373,7 +400,7 @@ h1, h2, h3, h4, .logo h1 {
     }
 
     .hero-text p {
-        font-size: 1.1rem;
+        font-size: 2.2rem;
     }
 
     .job-banner {
@@ -390,8 +417,8 @@ h1, h2, h3, h4, .logo h1 {
         font-size: 3rem;
     }
 
-    .hero-content {
-        padding: 70px 15px 15px;
+    .hero-text p {
+        font-size: 2rem;
     }
 
     .job-banner {
@@ -410,7 +437,7 @@ h1, h2, h3, h4, .logo h1 {
     }
 
     .hero-text p {
-        font-size: 1.1rem;
+        font-size: 1.8rem;
     }
 
     .job-banner {
@@ -439,7 +466,7 @@ h1, h2, h3, h4, .logo h1 {
     }
 
     .hero-text p {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
 
     .hero-content {
